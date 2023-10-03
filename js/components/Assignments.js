@@ -29,14 +29,18 @@ export default  {
 
 	data() {
 		return {
-			assignments: [
-				{id: 1, title: 'sometitle', isCompleted: false, tags: 'tag1'},
-				{id: 2, title: 'Another title', isCompleted: false, tags: 'tag1'},
-				{id: 3, title: 'title 3', isCompleted: false, tags: 'sometags'},
-				{id: 4, title: 'title 4', isCompleted: false, tags: 'goodtag'},
-			],
+			assignments: [],
 		}
 	},
+
+	created() {
+		fetch("http://127.0.0.1:3003/assignments",  
+			{ method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}})
+			.then(response => resonse.json())
+			.then( data => {
+				console.log(data)
+			} )
+	},	
 
 	computed: {
 		inProgressAssignment() {

@@ -1,0 +1,28 @@
+{
+    "assignments": [
+        {
+            "id": 1,
+            "isCompleted": false,
+            "tags": "tag1",
+            "title": "sometitle"
+        },
+        {
+            "id": 2,
+            "isCompleted": false,
+            "tags": "tag1",
+            "title": "Another title"
+        },
+        {
+            "id": 3,
+            "isCompleted": false,
+            "tags": "sometags",
+            "title": "title 3"
+        },
+        {
+            "id": 4,
+            "isCompleted": false,
+            "tags": "goodtag",
+            "title": "title 4"
+        }
+    ]
+}
