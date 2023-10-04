@@ -1,5 +1,7 @@
 import AssignmentList from './AssigmentList.js'
 import AssignmentCreate from './AssignmentCreate.js'
+// import axios from 'axios'
+// const axios = require('axios/dist/node/axios.cjs'); // node
 
 
 export default  {
@@ -7,17 +9,27 @@ export default  {
 
 		<!-- Completed Lists and UnCompletedt Lists  -->
 		<div class="grid grid-cols-1 gap-5">
-			<assignment-list  
-				title="Completed" 
-				:assignment="completedAssignment"></assignment-list >
+			<div class="flex gap-8">
+				<assignment-list  
+					title="Completed" 
+					:assignment="completedAssignment">
+						<template v-slot:createNewAssignment>
+							<assignment-create @createAssignment="add"></assignment-create>
+						</template>
+					</assignment-list >
 
-			<assignment-list 
-				title="In Progress" 
-				:assignment="inProgressAssignment"></assignment-list >
+				<assignment-list 
+					title="In Progress" 
+					:assignment="inProgressAssignment">
+					<template v-slot:createNewAssignment>
+						<assignment-create @createAssignment="add"></assignment-create>
+					</template>
+
+				</assignment-list >
+				
+			</div>
 
 
-			<assignment-create
-				@createAssignment="add"></assignment-create>
 
 		</div>
 	 `,
@@ -34,12 +46,18 @@ export default  {
 	},
 
 	created() {
-		fetch("http://127.0.0.1:3003/assignments",  
-			{ method: "GET", mode: 'cors', headers: { 'Content-Type': 'application/json'}})
-			.then(response => resonse.json())
-			.then( data => {
-				console.log(data)
-			} )
+		// let __res = axios.get("http://localhost:7008/assignments")
+
+		// console.log(__res)
+			// .then(response => resonse.json())
+			// .then( data => {
+			// 	console.log(data)
+			// } )
+		fetch("http://localhost:7008/assignments")
+			.then(response => response.json())
+			.then(data => {
+				this.assignments = data
+			})
 	},	
 
 	computed: {

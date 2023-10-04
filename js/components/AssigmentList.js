@@ -2,7 +2,7 @@ import AssignmentTags from './AssignmentTags.js'
 
 export default {
 	template: `
-		<div v-if="assignment.length > 0" class="flex flex-col space-y-2 mb-2">
+		<div v-if="assignment.length > 0" class="flex flex-col space-y-2 mb-2 w-64">
 			<h1 class="font-semibold text-lg">{{ title }} ({{ filterTagsResults.length }})</h1>
 
 			<!-- Load all tags -->
@@ -19,6 +19,8 @@ export default {
 				</li>
 
 			</ul>
+
+			<slot name="createNewAssignment"></slot>
 		</div>
 	`,
 
